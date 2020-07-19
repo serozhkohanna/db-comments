@@ -1,0 +1,21 @@
+@import "src/assets/variables";
+
+.button {
+  text-transform: uppercase;
+  width: 220px;
+  height: 60px;
+  border-radius: 5px;
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  letter-spacing: $ls-large;
+
+  &.add-comment {
+    background: $purple;
+    color: $light;
+    position: relative;
+
+    span {
+      margin-right: 10px;
+    }
+  }
+}
