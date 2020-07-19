@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.scss';
-import axios from 'axios';
+import { Route } from 'react-router-dom';
+import Header from "./components/Header/Header";
+import MainPage from "./Pages/MainPage/MainPage";
+import Modal from "./components/Modal/Modal";
 
 function App() {
-
-  const getData = () => {
-	axios.get('/comments')
-	  .then((response) => {
-		console.log(response.data)
-	  })
-  }
-
   return (
-	<div className="App">
-	  <button onClick={getData}>click</button>
+	<div className="page">
+	  <Header/>
+	  <div className="page-content">
+		<Route path='/' component={MainPage}/>
+		<Route path='/:id' component={Modal}/>
+	  </div>
 	</div>
   );
 }
