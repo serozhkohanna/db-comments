@@ -1,0 +1,54 @@
+@import "src/assets/variables";
+
+.comment-item {
+  max-width: 600px;
+  border-radius: 5px;
+  padding: 20px 20px 30px;
+  background: $light;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  &-header {
+    display: flex;
+    margin-bottom: 20px;
+
+    .icon-wrapper {
+      max-width: 35px;
+      max-height: 35px;
+      overflow: hidden;
+      margin-right: 20px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .user-data {
+      .name {
+        text-transform: capitalize;
+        font-family: 'Merriweather', serif;
+        letter-spacing: $ls-large;
+        font-size: 14px;
+        color: $grey;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .email {
+        color: $grey-light;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+      }
+    }
+  }
+
+  &-body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: $grey;
+  }
+}

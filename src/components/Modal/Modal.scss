@@ -1,0 +1,36 @@
+@import "src/assets/variables";
+
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba($grey, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal {
+    width: 500px;
+    height: auto;
+    background: $light;
+    color: $grey;
+    border-radius: 5px;
+    padding: 30px 20px;
+
+    &-title {
+      margin-bottom: 50px;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+
+      .input-field {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
