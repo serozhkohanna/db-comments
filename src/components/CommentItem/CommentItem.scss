@@ -6,6 +6,11 @@
   padding: 20px 20px 30px;
   background: $light;
   margin-bottom: 20px;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba($grey, .1);
+  }
 
   &:last-child {
     margin-bottom: 40px;
@@ -50,5 +55,16 @@
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     color: $grey;
+  }
+
+  .delete-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+    img {
+      width: 20px;
+    }
   }
 }
