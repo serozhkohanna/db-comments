@@ -11,7 +11,7 @@ function App() {
 	  <Header/>
 	  <div className="page-content">
 		<Route path='/' component={MainPage}/>
-		<Route path='/comments/add' component={Modal}/>
+		<Route path='/comments/addComment' component={Modal}/>
 	  </div>
 	</div>
   );

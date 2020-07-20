@@ -1,4 +1,4 @@
-import React, { ReactComponentElement } from 'react';
+import React from 'react';
 import './CommentItem.scss';
 import UserIcon from '../../assets/img/user.svg';
 
