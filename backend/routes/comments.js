@@ -21,7 +21,7 @@ router.route('/add').post((req, res) => {
 	});
 
 	newComment.save()
-		.then(() => res.json('Comment is added!'))
+		.then(({data}) => res.json(data))
 		.catch(err => res.status(400).json('Error: ' + err));
 });
 
