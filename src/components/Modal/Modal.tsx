@@ -7,8 +7,7 @@ const Modal = () => {
   const [commentInfo, setCommentInfo] = useState({name: '', email: '', text: ''});
   let history = useHistory();
 
-  const handlePostComment = (event: any) => {
-	event.preventDefault();
+  const handlePostComment = () => {
 
 	let {name, email, text} = commentInfo;
 
@@ -18,11 +17,13 @@ const Modal = () => {
 	  text
 	}
 
-	axios.post('http://localhost:5000/comments/add', postData)
-	  .then(res => console.log(res))
-	  .catch(err => console.log(err))
+	if (name && email && text) {
+	  axios.post('http://localhost:5000/comments/add', postData)
+		.then(res => console.log(res))
+		.catch(err => console.log(err))
 
-	history.push('/');
+	  history.push('/');
+	}
   }
 
   const handleNameChange = (e: any) => {
@@ -54,7 +55,7 @@ const Modal = () => {
 		  </div>
 		  <div className="input-field">
 			<label htmlFor="text">Text</label>
-			<input onChange={handleTextChange} type="text" id="text" required placeholder='text'/>
+			<textarea onChange={handleTextChange} id="text" placeholder='text'></textarea>
 		  </div>
 		  <button onClick={handlePostComment} className="submit">
 			add

@@ -13,15 +13,20 @@
   align-items: center;
 
   .modal {
-    width: 500px;
+    width: 400px;
     height: auto;
     background: $light;
     color: $grey;
     border-radius: 5px;
-    padding: 30px 20px;
+    padding: 30px 40px;
+    box-shadow: 0 0 10px $grey-light;
 
     &-title {
       margin-bottom: 50px;
+      font-family: 'Merriweather', serif;
+      letter-spacing: $ls-large;
+      font-weight: 600;
+      font-size: 22px;
     }
 
     &-body {
@@ -30,6 +35,35 @@
 
       .input-field {
         margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin-bottom: 5px;
+          font-size: 12px;
+          font-family: 'Poppins', sans-serif;
+          padding: 0 5px;
+        }
+
+        input {
+          border-bottom: 1px solid $grey;
+          padding: 5px;
+        }
+
+        textarea {
+          border: 1px solid $grey;
+          padding: 5px;
+          height: 70px;
+        }
+      }
+
+      .submit {
+        width: 100px;
+        height: 40px;
+        text-transform: uppercase;
+        background: $purple;
+        color: $light;
+        border-radius: 5px;
       }
     }
   }
