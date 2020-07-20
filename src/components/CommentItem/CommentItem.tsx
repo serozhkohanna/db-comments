@@ -2,6 +2,7 @@ import React from 'react';
 import './CommentItem.scss';
 import UserIcon from '../../assets/img/user.svg';
 import axios from 'axios';
+import RemoveIcon from '../../assets/img/delete.svg';
 
 interface Props {
   comment: any;
@@ -39,7 +40,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		<p>{comment.text}</p>
 	  </div>
 	  <button onClick={() => handleDeleteRecord(comment._id)} className="delete-btn">
-		delete
+		<img src={RemoveIcon} alt="delete-icon"/>
 	  </button>
 	</div> : null
   )
