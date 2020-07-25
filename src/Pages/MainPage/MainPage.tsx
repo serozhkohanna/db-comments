@@ -9,7 +9,7 @@ const MainPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-	setModalOpen(true);
+	setModalOpen(!isModalOpen);
   }
 
   return <main>
@@ -23,7 +23,7 @@ const MainPage = () => {
 		  <AddComment getCallback={handleOpenModal}/>
 		</div>
 	  </div>
-	  <Modal isModalOpen={isModalOpen}/>
+	  <Modal isModalOpen={isModalOpen} getCallback={handleOpenModal}/>
 	</div>
   </main>
 }

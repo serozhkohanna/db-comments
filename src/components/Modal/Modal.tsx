@@ -7,9 +7,10 @@ import IconClose from '../../assets/img/close.svg';
 
 interface Props {
   isModalOpen: boolean;
+  getCallback: any
 }
 
-const Modal = ({isModalOpen}: Props) => {
+const Modal = ({isModalOpen, getCallback}: Props) => {
   const [commentInfo, setCommentInfo] = useState({name: '', email: '', text: ''});
   let history = useHistory();
 
@@ -45,7 +46,7 @@ const Modal = ({isModalOpen}: Props) => {
   }
 
   const handleModalClose = () => {
-	history.push('/');
+	getCallback();
   }
 
   return <section className={`modal-wrapper ${isModalOpen && 'isOpen'}`}>
