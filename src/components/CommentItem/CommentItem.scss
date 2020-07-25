@@ -7,9 +7,11 @@
   background: $light;
   margin-bottom: 20px;
   position: relative;
+  border: 1px solid transparent;
 
   &:hover {
-    box-shadow: 0 0 20px rgba($grey, .1);
+    border: 1px solid rgba($grey, .3);
+    box-shadow: 0 0 5px rgba($grey, .1);
   }
 
   &:last-child {
@@ -62,6 +64,10 @@
     top: 20px;
     right: 20px;
     display: flex;
+  }
+
+  .edited {
+    margin-right: 10px;
   }
 
   .delete-btn, .edit-btn {

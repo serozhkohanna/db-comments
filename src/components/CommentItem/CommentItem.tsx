@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './CommentItem.scss';
 import UserIcon from '../../assets/img/user.svg';
 import axios from 'axios';
 import RemoveIcon from '../../assets/img/delete.svg';
 import EditIcon from '../../assets/img/edit.svg';
 import ModalUpdate from "../ModalUpdate/ModalUpdate";
+import Edited from "../Edited/Edited";
 
 interface Props {
   comment: any;
@@ -52,6 +52,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		<p>{comment.text}</p>
 	  </div>
 	  <div className="config-block">
+		{comment.createdAt !== comment.updatedAt && <Edited/>}
 		<button className="edit-btn" onClick={() => handleEditRecord(comment._id)}>
 		  <img src={EditIcon} alt="edit-icon"/>
 		</button>

@@ -1,0 +1,10 @@
+@import "src/assets/variables";
+
+.edited {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: $ls-large;
+  color: $purple;
+}

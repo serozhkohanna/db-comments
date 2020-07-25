@@ -35,7 +35,7 @@ const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord}: Props) => {
 		.then(res => console.log(res, 'Updated successfully! '))
 		.catch(err => console.log(err, 'Can not perform update operation'))
 
-	  handleModalClose();
+	  getCallback();
 	}
   }
 

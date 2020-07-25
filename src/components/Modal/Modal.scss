@@ -20,7 +20,7 @@
   .modal {
     width: 400px;
     height: auto;
-    background: $light;
+    background: #fff;
     color: $grey;
     border-radius: 5px;
     padding: 30px 40px;
@@ -61,6 +61,7 @@
           border: 1px solid $grey;
           padding: 5px;
           height: 70px;
+          border-radius: 3px;
         }
       }
 
