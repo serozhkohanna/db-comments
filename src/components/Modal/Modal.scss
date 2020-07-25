@@ -1,16 +1,21 @@
 @import "src/assets/variables";
 
 .modal-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: rgba($grey, .3);
-  display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10000;
+  display: none;
+
+  &.isOpen {
+    display: flex;
+  }
 
   .modal {
     width: 400px;
@@ -20,6 +25,8 @@
     border-radius: 5px;
     padding: 30px 40px;
     box-shadow: 0 0 10px $grey-light;
+    position: relative;
+    z-index: 500;
 
     &-title {
       margin-bottom: 50px;
@@ -64,6 +71,20 @@
         background: $purple;
         color: $light;
         border-radius: 5px;
+      }
+    }
+
+    &-close {
+      width: 12px;
+      height: 12px;
+      overflow: hidden;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+
+      img {
+        width: 100%;
       }
     }
   }

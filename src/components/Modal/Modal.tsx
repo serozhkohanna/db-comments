@@ -3,7 +3,14 @@ import { useHistory } from 'react-router-dom';
 import './Modal.scss';
 import axios from 'axios';
 
-const Modal = () => {
+import IconClose from '../../assets/img/close.svg';
+
+interface Props {
+  isModalOpen: boolean;
+  getCallback: any
+}
+
+const Modal = ({isModalOpen, getCallback}: Props) => {
   const [commentInfo, setCommentInfo] = useState({name: '', email: '', text: ''});
   let history = useHistory();
 
@@ -22,7 +29,7 @@ const Modal = () => {
 		.then(res => console.log(res))
 		.catch(err => console.log(err))
 
-	  history.push('/');
+	  handleModalClose();
 	}
   }
 
@@ -38,7 +45,11 @@ const Modal = () => {
 	setCommentInfo({...commentInfo, text: e.target.value});
   }
 
-  return <section className='modal-wrapper'>
+  const handleModalClose = () => {
+	getCallback();
+  }
+
+  return <section className={`modal-wrapper ${isModalOpen && 'isOpen'}`}>
 	<div className="modal">
 	  <div className="modal-title">
 		<p>Add comment</p>
@@ -55,12 +66,15 @@ const Modal = () => {
 		  </div>
 		  <div className="input-field">
 			<label htmlFor="text">Text</label>
-			<textarea onChange={handleTextChange} id="text" placeholder='text'></textarea>
+			<textarea onChange={handleTextChange} id="text" placeholder='text'/>
 		  </div>
 		  <button onClick={handlePostComment} className="submit">
 			add
 		  </button>
 		</form>
+		<button className="modal-close" onClick={handleModalClose}>
+		  <img src={IconClose} alt="close-btn"/>
+		</button>
 	  </div>
 	</div>
   </section>
