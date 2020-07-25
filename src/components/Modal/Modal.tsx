@@ -5,7 +5,11 @@ import axios from 'axios';
 
 import IconClose from '../../assets/img/close.svg';
 
-const Modal = () => {
+interface Props {
+  isModalOpen: boolean;
+}
+
+const Modal = ({isModalOpen}: Props) => {
   const [commentInfo, setCommentInfo] = useState({name: '', email: '', text: ''});
   let history = useHistory();
 
@@ -44,7 +48,7 @@ const Modal = () => {
 	history.push('/');
   }
 
-  return <section className='modal-wrapper'>
+  return <section className={`modal-wrapper ${isModalOpen && 'isOpen'}`}>
 	<div className="modal">
 	  <div className="modal-title">
 		<p>Add comment</p>

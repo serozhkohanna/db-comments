@@ -1,13 +1,14 @@
 import React from 'react';
 import './AddComments.scss';
 import CrossIcon from '../../assets/img/cross.svg';
-import { useHistory } from "react-router-dom";
+interface Props {
+  getCallback: any
+}
 
-const AddComment = () => {
-  let history = useHistory();
+const AddComment = ({getCallback}: Props) => {
 
   const handleOpenModal = () => {
-	history.push('/comments/addComment');
+	getCallback();
   }
 
   return <button className='button add-comment' onClick={handleOpenModal}>
