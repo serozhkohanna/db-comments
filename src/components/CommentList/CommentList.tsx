@@ -16,11 +16,7 @@ const CommentList = () => {
   }
 
   useEffect(() => {
-	axios.get('http://localhost:5000/comments')
-	  .then(({data}) => {
-		setComments(data);
-	  })
-	  .catch(err => console.log(err));
+	updateList();
   }, [])
 
   return <section className='comment-list'>
