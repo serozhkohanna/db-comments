@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './Modal.scss';
 import axios from 'axios';
 
@@ -12,7 +11,6 @@ interface Props {
 
 const Modal = ({isModalOpen, getCallback}: Props) => {
   const [commentInfo, setCommentInfo] = useState({name: '', email: '', text: ''});
-  let history = useHistory();
 
   const handlePostComment = () => {
 
@@ -26,8 +24,8 @@ const Modal = ({isModalOpen, getCallback}: Props) => {
 
 	if (name && email && text) {
 	  axios.post('http://localhost:5000/comments/add', postData)
-		.then(res => console.log(res))
-		.catch(err => console.log(err))
+		.then(res => console.log(res, 'Added comment successfully'))
+		.catch(err => console.log(err, 'Can not perform update operation'))
 
 	  handleModalClose();
 	}

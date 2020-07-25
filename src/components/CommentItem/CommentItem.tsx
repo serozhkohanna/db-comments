@@ -20,7 +20,6 @@ const CommentItem = ({comment, isUpdated}: Props) => {
   }
 
   const handleDeleteRecord = (id: string) => {
-	console.log(id);
 	axios.delete(`http://localhost:5000/comments/${id}`)
 	  .then(res => sendData())
 	  .catch(err => console.log(err))
@@ -60,7 +59,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		  <img src={RemoveIcon} alt="delete-icon"/>
 		</button>
 	  </div>
-	  <ModalUpdate isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
+	  <ModalUpdate currentRecord={comment} isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
 	</div> : null
   )
 }
