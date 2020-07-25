@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './CommentItem.scss';
 import UserIcon from '../../assets/img/user.svg';
 import axios from 'axios';
 import RemoveIcon from '../../assets/img/delete.svg';
 import EditIcon from '../../assets/img/edit.svg';
 import ModalUpdate from "../ModalUpdate/ModalUpdate";
+import Edited from "../Edited/Edited";
 
 interface Props {
   comment: any;
@@ -20,7 +20,6 @@ const CommentItem = ({comment, isUpdated}: Props) => {
   }
 
   const handleDeleteRecord = (id: string) => {
-	console.log(id);
 	axios.delete(`http://localhost:5000/comments/${id}`)
 	  .then(res => sendData())
 	  .catch(err => console.log(err))
@@ -53,6 +52,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		<p>{comment.text}</p>
 	  </div>
 	  <div className="config-block">
+		{comment.createdAt !== comment.updatedAt && <Edited/>}
 		<button className="edit-btn" onClick={() => handleEditRecord(comment._id)}>
 		  <img src={EditIcon} alt="edit-icon"/>
 		</button>
@@ -60,7 +60,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		  <img src={RemoveIcon} alt="delete-icon"/>
 		</button>
 	  </div>
-	  <ModalUpdate isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
+	  <ModalUpdate currentRecord={comment} isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
 	</div> : null
   )
 }

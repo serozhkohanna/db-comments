@@ -8,6 +8,19 @@ router.route('/').get((req, res) => {
 		.catch(err => res.status(400).json('Error: ' + err));
 });
 
+//End point to sort data created/updated
+router.route('/sort/date').get((req, res) => {
+	Comments.find().sort({createdAt: 1})
+		.then(comments => res.json(comments))
+		.catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/sort/name').get((req, res) => {
+	Comments.find().sort({name: 1})
+		.then(comments => res.json(comments))
+		.catch(err => res.status(400).json('Error: ' + err));
+});
+
 //Second end point to handle POST req
 router.route('/add').post((req, res) => {
 	const name = req.body.name;

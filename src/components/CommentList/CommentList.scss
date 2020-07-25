@@ -1,6 +1,53 @@
+@import "src/assets/variables";
+
 .comment-list {
   width: 100%;
   height: auto;
   overflow: scroll;
   padding: 15px 15px 200px;
+
+  &-params {
+    position: fixed;
+    top: 200px;
+    width: 100%;
+    max-width: 540px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: $ls-large;
+    color: $grey-light;
+    font-size: 12px;
+    font-weight: 600;
+
+    .sort-button {
+      display: flex;
+    }
+
+    button {
+      margin-right: 30px;
+      display: flex;
+      align-items: center;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.isActive {
+        color: $purple;
+
+        svg * {
+          fill: $purple;
+        }
+      }
+
+      svg {
+        width: 15px;
+        height: 15px;
+
+        & * {
+          fill: $grey-light;
+        }
+      }
+    }
+  }
 }
