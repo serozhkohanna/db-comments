@@ -3,6 +3,7 @@ import './CommentList.scss';
 import { getData } from "../../constants/getData";
 
 import CommentItem from "../CommentItem/CommentItem";
+import NoComments from "../NoComments/NoComments";
 
 const CommentList = () => {
   const [comments, setComments] = useState([]);
@@ -53,10 +54,10 @@ const CommentList = () => {
 		</button>
 	  </div>
 	</div>
-	{comments.map((item, i) => {
+	{comments.length > 0 ? comments.map((item, i) => {
 	  return <CommentItem isUpdated={() => getData('http://localhost:5000/comments', setComments)} key={i}
 						  comment={item}/>
-	})}
+	}) : <NoComments/>}
   </section>
 }
 
