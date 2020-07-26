@@ -7,8 +7,10 @@ import EditIcon from '../../assets/img/edit.svg';
 import ModalUpdate from "../ModalUpdate/ModalUpdate";
 import Edited from "../Edited/Edited";
 
+import { Comment } from "../../constants/comment.interface";
+
 interface Props {
-  comment: any;
+  comment: Comment;
   isUpdated: any;
 }
 

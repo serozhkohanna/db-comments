@@ -10,7 +10,7 @@ router.route('/').get((req, res) => {
 
 //End point to sort data created/updated
 router.route('/sort/date').get((req, res) => {
-	Comments.find().sort({createdAt: 1})
+	Comments.find().sort({createdAt: -1})
 		.then(comments => res.json(comments))
 		.catch(err => res.status(400).json('Error: ' + err));
 });
