@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './CommentList.scss';
-import { getData, getSortByDate, getSortByName } from "../../constants/getData";
+import { getData } from "../../constants/getData";
 
 import CommentItem from "../CommentItem/CommentItem";
 
@@ -9,18 +9,12 @@ const CommentList = () => {
   const [sortParam, setSortParam] = useState('date');
 
   useEffect(() => {
-	getData(setComments);
+	getData('http://localhost:5000/comments', setComments);
   }, [])
 
   const handleSort = (type: string) => {
 	setSortParam(type);
-
-	switch (type) {
-	  case 'date':
-	    return getSortByDate(setComments)
-	  case 'name':
-		return getSortByName(setComments)
-	}
+	getData(`http://localhost:5000/comments/sort/${type}`, setComments);
   }
 
   return <section className='comment-list'>
@@ -60,7 +54,8 @@ const CommentList = () => {
 	  </div>
 	</div>
 	{comments.map((item, i) => {
-	  return <CommentItem isUpdated={() => getData(setComments)} key={i} comment={item}/>
+	  return <CommentItem isUpdated={() => getData('http://localhost:5000/comments', setComments)} key={i}
+						  comment={item}/>
 	})}
   </section>
 }
