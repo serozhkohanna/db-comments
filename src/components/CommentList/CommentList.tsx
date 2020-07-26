@@ -6,7 +6,7 @@ import CommentItem from "../CommentItem/CommentItem";
 
 const CommentList = () => {
   const [comments, setComments] = useState([]);
-  const [sortParam, setSortParam] = useState('date');
+  const [sortParam, setSortParam] = useState();
 
   useEffect(() => {
 	getData('http://localhost:5000/comments', setComments);
