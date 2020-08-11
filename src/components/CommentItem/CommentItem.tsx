@@ -22,7 +22,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
   }
 
   const handleDeleteRecord = (id: string) => {
-	axios.delete(`http://localhost:5000/comments/${id}`)
+	axios.delete(`http://localhost:5001/comments/${id}`)
 	  .then(res => sendData())
 	  .catch(err => console.log(err))
   }
