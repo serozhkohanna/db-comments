@@ -31,7 +31,7 @@ const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord}: Props) => {
 	}
 
 	if (name || email || text) {
-	  axios.post(`http://localhost:5000/comments/update/${currentRecord._id}`, postData)
+	  axios.post(`http://localhost:5001/comments/update/${currentRecord._id}`, postData)
 		.then(res => console.log(res, 'Updated successfully! '))
 		.catch(err => console.log(err, 'Can not perform update operation'))
 

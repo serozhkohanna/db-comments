@@ -23,7 +23,7 @@ const Modal = ({isModalOpen, getCallback}: Props) => {
 	}
 
 	if (name && email && text) {
-	  axios.post('http://localhost:5000/comments/add', postData)
+	  axios.post('http://localhost:5001/comments/add', postData)
 		.then(res => console.log(res, 'Added comment successfully'))
 		.catch(err => console.log(err, 'Can not perform update operation'))
 
