@@ -1,9 +1,8 @@
 import axios from "axios";
 
-export function getData(requestedUrl: string, setComments: any) {
-  axios.get(requestedUrl)
-	.then(({data}) => {
-	  setComments(data);
-	})
-	.catch(err => console.log(err));
+export function getData(url: string) {
+  return axios.get(url)
+	.then(res => res.data)
+	.catch(err => console.log(err))
 }
+
