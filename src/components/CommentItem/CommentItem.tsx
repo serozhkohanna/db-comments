@@ -7,6 +7,8 @@ import EditIcon from '../../assets/img/edit.svg';
 import ModalUpdate from "../ModalUpdate/ModalUpdate";
 import Edited from "../Edited/Edited";
 
+import moment from 'moment';
+
 import { Comment } from "../../constants/comment.interface";
 
 interface Props {
@@ -17,6 +19,8 @@ interface Props {
 
 const CommentItem = ({comment, isUpdated, update}: Props) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+  let dateFormatted = moment(comment.createdAt).format('LL');
 
   const sendData = () => {
 	isUpdated();
@@ -52,6 +56,9 @@ const CommentItem = ({comment, isUpdated, update}: Props) => {
 		  </p>
 		  <p className="email">
 			{comment.email}
+		  </p>
+		  <p className="date">
+			{dateFormatted}
 		  </p>
 		</div>
 	  </div>
