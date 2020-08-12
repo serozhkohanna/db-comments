@@ -12,9 +12,10 @@ import { Comment } from "../../constants/comment.interface";
 interface Props {
   comment: Comment;
   isUpdated: any;
+  update: Function;
 }
 
-const CommentItem = ({comment, isUpdated}: Props) => {
+const CommentItem = ({comment, isUpdated, update}: Props) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   const sendData = () => {
@@ -33,6 +34,10 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 
   const handleCloseModal = () => {
 	setEditModalOpen(false);
+  }
+
+  const setUpdate = () => {
+	update();
   }
 
   return (
@@ -62,7 +67,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		  <img src={RemoveIcon} alt="delete-icon"/>
 		</button>
 	  </div>
-	  <ModalUpdate currentRecord={comment} isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
+	  <ModalUpdate getUpdate={setUpdate} currentRecord={comment} isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
 	</div> : null
   )
 }

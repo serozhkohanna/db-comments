@@ -24,6 +24,11 @@ const CommentList = () => {
 	  .then(data => setComments(data))
   }
 
+  const setUpdate = () => {
+	setData();
+  }
+
+
   return <section className='comment-list'>
 	<div className="comment-list-params">
 	  <div className="total">
@@ -61,7 +66,7 @@ const CommentList = () => {
 	  </div>
 	</div>
 	{comments.length > 0 ? comments.map((item, i) => {
-	  return <CommentItem isUpdated={() => setData()} key={i}
+	  return <CommentItem update={setUpdate} isUpdated={() => setData()} key={i}
 						  comment={item}/>
 	}) : <NoComments/>}
   </section>

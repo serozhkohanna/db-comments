@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import './ModalUpdate.scss';
 import '../Modal/Modal.scss';
 import IconClose from "../../assets/img/close.svg";
 import axios from "axios";
+import { postData } from "../../constants/postData";
 
 interface Props {
   isEditModalOpen: boolean;
   getCallback: any;
-  currentRecord: any
+  currentRecord: any;
+  getUpdate: Function;
 }
 
-const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord}: Props) => {
+const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord, getUpdate}: Props) => {
   const [commentInfo, updateCommentInfo] = useState({
 	name: currentRecord.name,
 	email: currentRecord.email,
@@ -21,19 +23,19 @@ const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord}: Props) => {
 	getCallback();
   }
 
-  const handleUpdateComment = () => {
+  const handleUpdateComment = (e: FormEvent) => {
 	let {name, email, text} = commentInfo;
+	e.preventDefault();
 
-	let postData = {
+	let data = {
 	  name,
 	  email,
 	  text
 	}
 
 	if (name || email || text) {
-	  axios.post(`http://localhost:5001/comments/update/${currentRecord._id}`, postData)
-		.then(res => console.log(res, 'Updated successfully! '))
-		.catch(err => console.log(err, 'Can not perform update operation'))
+	  postData(`http://localhost:5001/comments/update/${currentRecord._id}`, data)
+		.then(res => getUpdate(res))
 
 	  getCallback();
 	}
