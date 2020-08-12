@@ -4,6 +4,7 @@ import { getData } from "../../constants/getData";
 
 import CommentItem from "../CommentItem/CommentItem";
 import NoComments from "../NoComments/NoComments";
+import Loader from "../Loader/Loader";
 
 const CommentList = () => {
   const [comments, setComments] = useState([]);
@@ -27,6 +28,8 @@ const CommentList = () => {
   const setUpdate = () => {
 	setData();
   }
+
+  console.log(comments);
 
 
   return <section className='comment-list'>
@@ -68,7 +71,7 @@ const CommentList = () => {
 	{comments.length > 0 ? comments.map((item, i) => {
 	  return <CommentItem update={setUpdate} isUpdated={() => setData()} key={i}
 						  comment={item}/>
-	}) : <NoComments/>}
+	}) : <Loader/>}
   </section>
 }
 
