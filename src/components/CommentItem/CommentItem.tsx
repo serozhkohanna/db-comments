@@ -13,7 +13,7 @@ import { Comment } from "../../constants/comment.interface";
 
 interface Props {
   comment: Comment;
-  isUpdated: any;
+  isUpdated: Function;
   update: Function;
 }
 
