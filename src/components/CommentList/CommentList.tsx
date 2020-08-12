@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './CommentList.scss';
-import { getData } from "../../constants/getData";
+import { getData } from "../../services/getData";
 
 import CommentItem from "../CommentItem/CommentItem";
 import NoComments from "../NoComments/NoComments";
