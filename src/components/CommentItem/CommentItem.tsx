@@ -7,15 +7,20 @@ import EditIcon from '../../assets/img/edit.svg';
 import ModalUpdate from "../ModalUpdate/ModalUpdate";
 import Edited from "../Edited/Edited";
 
+import moment from 'moment';
+
 import { Comment } from "../../constants/comment.interface";
 
 interface Props {
   comment: Comment;
-  isUpdated: any;
+  isUpdated: Function;
+  update: Function;
 }
 
-const CommentItem = ({comment, isUpdated}: Props) => {
+const CommentItem = ({comment, isUpdated, update}: Props) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+  let dateFormatted = moment(comment.createdAt).format('LL');
 
   const sendData = () => {
 	isUpdated();
@@ -35,6 +40,10 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 	setEditModalOpen(false);
   }
 
+  const setUpdate = () => {
+	update();
+  }
+
   return (
 	comment ? <div className='comment-item'>
 	  <div className="comment-item-header">
@@ -47,6 +56,9 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		  </p>
 		  <p className="email">
 			{comment.email}
+		  </p>
+		  <p className="date">
+			{dateFormatted}
 		  </p>
 		</div>
 	  </div>
@@ -62,7 +74,7 @@ const CommentItem = ({comment, isUpdated}: Props) => {
 		  <img src={RemoveIcon} alt="delete-icon"/>
 		</button>
 	  </div>
-	  <ModalUpdate currentRecord={comment} isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
+	  <ModalUpdate getUpdate={setUpdate} currentRecord={comment} isEditModalOpen={isEditModalOpen} getCallback={handleCloseModal}/>
 	</div> : null
   )
 }

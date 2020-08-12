@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './AddComments.scss';
 import CrossIcon from '../../assets/img/cross.svg';
 interface Props {
-  getCallback: any
+  getCallback: Function
 }
 
-const AddComment = ({getCallback}: Props) => {
+const AddComment:FC<Props> = ({getCallback}) => {
 
   const handleOpenModal = () => {
 	getCallback();

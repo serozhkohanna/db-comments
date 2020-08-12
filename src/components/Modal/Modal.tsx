@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC, FormEvent } from 'react';
 import './Modal.scss';
 import axios from 'axios';
 
@@ -6,10 +6,10 @@ import IconClose from '../../assets/img/close.svg';
 
 interface Props {
   isModalOpen: boolean;
-  getCallback: any
+  getCallback: Function
 }
 
-const Modal = ({isModalOpen, getCallback}: Props) => {
+const Modal: FC<Props> = ({isModalOpen, getCallback}) => {
   const [commentInfo, setCommentInfo] = useState({name: '', email: '', text: ''});
 
   const handlePostComment = () => {
@@ -31,16 +31,16 @@ const Modal = ({isModalOpen, getCallback}: Props) => {
 	}
   }
 
-  const handleNameChange = (e: any) => {
-	setCommentInfo({...commentInfo, name: e.target.value});
+  const handleNameChange = (e: FormEvent<HTMLInputElement>) => {
+	setCommentInfo({...commentInfo, name: e.currentTarget.value});
   }
 
-  const handleEmailChange = (e: any) => {
-	setCommentInfo({...commentInfo, email: e.target.value});
+  const handleEmailChange = (e: FormEvent<HTMLInputElement>) => {
+	setCommentInfo({...commentInfo, email: e.currentTarget.value});
   }
 
-  const handleTextChange = (e: any) => {
-	setCommentInfo({...commentInfo, text: e.target.value});
+  const handleTextChange = (e: FormEvent<HTMLTextAreaElement>) => {
+	setCommentInfo({...commentInfo, text: e.currentTarget.value});
   }
 
   const handleModalClose = () => {

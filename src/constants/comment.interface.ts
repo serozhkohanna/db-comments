@@ -3,6 +3,6 @@ export interface Comment {
   name: string;
   email: string;
   text: string;
-  updatedAt?: any;
-  createdAt?: any;
+  updatedAt?: Date;
+  createdAt?: Date;
 }

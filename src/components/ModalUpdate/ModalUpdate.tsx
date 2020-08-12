@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState, FC } from 'react';
 import './ModalUpdate.scss';
 import '../Modal/Modal.scss';
 import IconClose from "../../assets/img/close.svg";
-import axios from "axios";
+
+import { postData } from "../../constants/postData";
+import { Comment } from "../../constants/comment.interface";
 
 interface Props {
   isEditModalOpen: boolean;
-  getCallback: any;
-  currentRecord: any
+  getCallback: Function;
+  currentRecord: Comment;
+  getUpdate: Function;
 }
 
-const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord}: Props) => {
+const ModalUpdate: FC<Props> = ({isEditModalOpen, getCallback, currentRecord, getUpdate}) => {
   const [commentInfo, updateCommentInfo] = useState({
+	_id: currentRecord._id,
 	name: currentRecord.name,
 	email: currentRecord.email,
 	text: currentRecord.text
@@ -21,34 +25,35 @@ const ModalUpdate = ({isEditModalOpen, getCallback, currentRecord}: Props) => {
 	getCallback();
   }
 
-  const handleUpdateComment = () => {
-	let {name, email, text} = commentInfo;
+  const handleUpdateComment = (e: FormEvent) => {
+	let {name, email, text, _id} = commentInfo;
+	e.preventDefault();
 
-	let postData = {
+	let data = {
+	  _id,
 	  name,
 	  email,
 	  text
 	}
 
 	if (name || email || text) {
-	  axios.post(`http://localhost:5001/comments/update/${currentRecord._id}`, postData)
-		.then(res => console.log(res, 'Updated successfully! '))
-		.catch(err => console.log(err, 'Can not perform update operation'))
+	  postData(`http://localhost:5001/comments/update/${currentRecord._id}`, data)
+		.then(res => getUpdate(res))
 
 	  getCallback();
 	}
   }
 
-  const handleNameChange = (e: any) => {
-	updateCommentInfo({...commentInfo, name: e.target.value});
+  const handleNameChange = (e: FormEvent<HTMLInputElement>) => {
+	updateCommentInfo({...commentInfo, name: e.currentTarget.value});
   }
 
-  const handleEmailChange = (e: any) => {
-	updateCommentInfo({...commentInfo, email: e.target.value});
+  const handleEmailChange = (e: FormEvent<HTMLInputElement>) => {
+	updateCommentInfo({...commentInfo, email: e.currentTarget.value});
   }
 
-  const handleTextChange = (e: any) => {
-	updateCommentInfo({...commentInfo, text: e.target.value});
+  const handleTextChange = (e: FormEvent<HTMLTextAreaElement>) => {
+	updateCommentInfo({...commentInfo, text: e.currentTarget.value});
   }
 
   return <section className={`modal-wrapper ${isEditModalOpen && 'isOpen'}`}>

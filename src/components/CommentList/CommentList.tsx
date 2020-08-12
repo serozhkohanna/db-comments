@@ -10,13 +10,24 @@ const CommentList = () => {
   const [sortParam, setSortParam] = useState();
 
   useEffect(() => {
-	getData('http://localhost:5001/comments', setComments);
+	setData();
   }, [])
 
   const handleSort = (type: string) => {
 	setSortParam(type);
-	getData(`http://localhost:5001/comments/sort/${type}`, setComments);
+	getData(`http://localhost:5001/comments/sort/${type}`)
+	  .then(data => setComments(data))
   }
+
+  const setData = () => {
+	getData('http://localhost:5001/comments')
+	  .then(data => setComments(data))
+  }
+
+  const setUpdate = () => {
+	setData();
+  }
+
 
   return <section className='comment-list'>
 	<div className="comment-list-params">
@@ -55,7 +66,7 @@ const CommentList = () => {
 	  </div>
 	</div>
 	{comments.length > 0 ? comments.map((item, i) => {
-	  return <CommentItem isUpdated={() => getData('http://localhost:5001/comments', setComments)} key={i}
+	  return <CommentItem update={setUpdate} isUpdated={() => setData()} key={i}
 						  comment={item}/>
 	}) : <NoComments/>}
   </section>

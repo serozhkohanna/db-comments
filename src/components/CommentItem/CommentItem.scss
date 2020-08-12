@@ -34,6 +34,8 @@
     }
 
     .user-data {
+      max-width: 330px;
+
       .name {
         text-transform: capitalize;
         font-family: 'Merriweather', serif;
@@ -42,12 +44,23 @@
         color: $grey;
         font-weight: 600;
         margin-bottom: 5px;
+        white-space: nowrap;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .email {
         color: $grey-light;
         font-size: 12px;
         font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 3px;
+      }
+
+      .date {
+        color: $grey-light;
+        font-size: 12px;
         font-family: 'Poppins', sans-serif;
       }
     }
