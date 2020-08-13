@@ -20,7 +20,7 @@ interface Props {
 const CommentItem = ({comment, isUpdated, update}: Props) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
 
-  let dateFormatted = moment(comment.createdAt).format('LL');
+  let dateFormatted = moment(comment.createdAt).format("dddd, MMMM Do, h:mm a");
 
   const sendData = () => {
 	isUpdated();

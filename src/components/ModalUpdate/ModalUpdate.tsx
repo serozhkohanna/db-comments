@@ -3,7 +3,7 @@ import './ModalUpdate.scss';
 import '../Modal/Modal.scss';
 import IconClose from "../../assets/img/close.svg";
 
-import { postData } from "../../constants/postData";
+import { postData } from "../../services/postData";
 import { Comment } from "../../constants/comment.interface";
 
 interface Props {

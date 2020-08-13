@@ -1,8 +1,8 @@
 export interface Comment {
-  _id: string;
+  readonly _id: string;
   name: string;
   email: string;
   text: string;
-  updatedAt?: Date;
-  createdAt?: Date;
+  readonly updatedAt?: Date;
+  readonly createdAt?: Date;
 }
